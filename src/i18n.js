@@ -62,11 +62,11 @@ export const translations = {
 
     // Demo items
     demos: [
-      { name: 'Tabasco Al-Sham', label: 'مطعم تاباسكو الشام', url: 'https://tabasco-al-sham.nexadigital.dev/', emoji: '🌮' },
-      { name: 'Mahshi Al-Baghdady', label: 'محشي البغدادي', url: 'https://mahshi-albaghdady2.vercel.app/', emoji: '🍲' },
-      { name: 'Product Menu', label: 'الساعات الذهبية', url: 'https://product-menu.nexadigital.dev/', emoji: '📋' },
-      { name: 'Coral Perfumes', label: 'كورال للعطور', url: 'https://coral-perfumes.nexadigital.dev/', emoji: '✨' },
-      { name: 'Shawarma Nazoland', label: 'شاورما نازولاند', url: 'https://shawarma-nazoland.nexadigital.dev/', emoji: '🌯' },
+      { name: 'Tabasco Al-Sham', label: 'مطعم تاباسكو الشام', url: 'https://tabasco-al-sham.nexadigital.dev/' ,target: '_blank', rel: 'noopener noreferrer', emoji: '🌮' },
+      { name: 'Mahshi Al-Baghdady', label: 'محشي البغدادي', url: 'https://mahshi-albaghdady2.vercel.app/',target: '_blank', rel: 'noopener noreferrer', emoji: '🍲' },
+      { name: 'Product Menu', label: 'الساعات الذهبية', url: 'https://product-menu.nexadigital.dev/',target: '_blank', rel: 'noopener noreferrer', emoji: '📋' },
+      { name: 'Coral Perfumes', label: 'كورال للعطور', url: 'https://coral-perfumes.nexadigital.dev/',target: '_blank', rel: 'noopener noreferrer', emoji: '✨' },
+      { name: 'Shawarma Nazoland', label: 'شاورما نازولاند', url: 'https://shawarma-nazoland.nexadigital.dev/',target: '_blank', rel: 'noopener noreferrer', emoji: '🌯' },
     ],
 
     // Final CTA
