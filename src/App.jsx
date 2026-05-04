@@ -50,7 +50,7 @@ export default function App() {
             <div className="w-10 h-10 md:w-14 md:h-14 rounded-xl md:rounded-2xl bg-gradient-to-br from-cyan-400 via-indigo-500 to-violet-600 p-[1px] shadow-xl shadow-indigo-500/10 transition-transform duration-500">
               <div className="w-full h-full rounded-[11px] md:rounded-[15px] bg-[#0a0f1e] flex items-center justify-center overflow-hidden">
                 <img 
-                  src="/Nexa-Digital.png" 
+                  src="/logo-icon.png" 
                   alt="Nexa Digital" 
                   className="w-full h-full object-cover scale-110" 
                   fetchpriority="high"
@@ -302,7 +302,7 @@ export default function App() {
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500/50 to-violet-600/50 p-[1px]">
               <div className="w-full h-full rounded-[11px] bg-[#0a0f1e] flex items-center justify-center overflow-hidden">
                 <img 
-                  src="/Nexa-Digital.png" 
+                  src="/logo-icon.png" 
                   alt="Nexa Digital" 
                   className="w-full h-full object-cover opacity-80" 
                   loading="lazy"
