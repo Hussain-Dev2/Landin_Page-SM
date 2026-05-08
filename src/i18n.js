@@ -78,7 +78,8 @@ export const translations = {
     iq_tier_currency: 'د.ع',
     iq_tier_period: '/ سنة',
     iq_tier_desc: 'اشتراك سنوي شامل للمطاعم العراقية — ادفع مرّة واستمتع سنة كاملة.',
-    iq_tier_payment: 'ZainCash • تحويل محلي',
+    iq_tier_payment: 'ZainCash • FIB • تحويل محلي',
+    hero_price_highlight: '40,000 د.ع / سنة',
 
     // International tier
     intl_tier_title: 'المنيو المتكامل',
@@ -218,7 +219,8 @@ export const translations = {
     iq_tier_currency: 'IQD',
     iq_tier_period: '/ year',
     iq_tier_desc: 'All-inclusive annual subscription for Iraqi restaurants — pay once, enjoy a full year.',
-    iq_tier_payment: 'ZainCash • Local Transfer',
+    iq_tier_payment: 'ZainCash • FIB • Local Transfer',
+    hero_price_highlight: '40,000 IQD / year',
 
     // International tier
     intl_tier_title: 'Full Professional Plan',

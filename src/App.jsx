@@ -131,96 +131,96 @@ export default function App() {
       <main className="pt-24 pb-16 px-4 md:px-6 max-w-6xl mx-auto space-y-20 md:space-y-32">
 
         {/* ═══════════════════════════════════════════════
-           HERO — ATTENTION
+           HERO — ATTENTION (Mobile-First Redesign)
            ═══════════════════════════════════════════════ */}
-        <section className={`flex flex-col items-center text-center space-y-6 md:space-y-8 ${isLoaded ? 'fade-up' : 'opacity-0'}`}>
+        <section className={`flex flex-col items-center text-center ${isLoaded ? 'fade-up' : 'opacity-0'}`}>
 
-          {/* Scarcity badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full glass-card border-amber-500/30 bg-amber-500/5 text-amber-300 text-xs md:text-sm font-medium mb-1 md:mb-4 delay-100 animate-float">
-            <span className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-amber-400 animate-pulse"></span>
-            {t.hero_badge}
+          {/* Location badge + Scarcity — single compact row */}
+          <div className="flex items-center gap-2 px-3 py-1.5 rounded-full glass-card border-amber-500/20 bg-amber-500/5 text-amber-300 text-[10px] sm:text-xs font-medium mb-3 md:mb-4 delay-100">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+            {showIraqPricing ? '🇮🇶' : '🌍'} {t.hero_badge}
           </div>
 
-          {/* Main headline — pain point */}
-          <h1 className="text-3xl sm:text-4xl md:text-7xl font-extrabold leading-[1.15] md:leading-[1.1] tracking-tight delay-200 px-2">
-            {t.hero_headline_1} <br/>
-            <span className="text-gradient-vibrant block mt-1 md:mt-2">{t.hero_headline_2}</span>
+          {/* FOMO Fire Progress Bar — impossible to miss */}
+          <div className="w-full px-2 mb-3 md:mb-4 delay-200">
+            <FireProgressBar remaining={42} total={50} />
+          </div>
+
+          {/* QR Code scanning GIF — small, above headline */}
+          <div className="relative w-16 h-16 md:w-20 md:h-20 mx-auto mb-2 delay-200 opacity-80">
+            <div className="w-full h-full rounded-xl bg-gradient-to-br from-amber-500/20 to-indigo-500/20 border border-amber-500/20 flex items-center justify-center animate-pulse-soft">
+              <QrCode className="w-8 h-8 md:w-10 md:h-10 text-amber-400/60" />
+            </div>
+            {/* Scanning animation overlay */}
+            <div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none">
+              <div className="absolute left-0 right-0 h-[2px] bg-amber-400/40 shadow-lg shadow-amber-400/20 scanning-line"></div>
+            </div>
+          </div>
+
+          {/* Headline — smaller, 2-3 lines max, price as sub-highlight */}
+          <h1 className="text-lg sm:text-xl md:text-4xl lg:text-5xl font-extrabold leading-snug md:leading-[1.15] tracking-tight delay-300 px-2 max-w-3xl">
+            {t.hero_headline_1}
           </h1>
 
-          <p className="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl delay-300 leading-relaxed px-2">
+          {/* Price highlight — impossible to miss */}
+          <div className="delay-400">
+            <span className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-gradient-vibrant drop-shadow-lg">
+              {showIraqPricing ? t.iq_tier_amount : t.intl_tier_amount}
+            </span>
+            <div className="text-sm md:text-lg font-bold text-white/90 -mt-1">
+              {showIraqPricing ? `${t.iq_tier_currency} ${t.iq_tier_period}` : `${t.intl_tier_currency}${t.intl_tier_period}`}
+            </div>
+          </div>
+
+          {/* Sub-description */}
+          <p className="text-xs sm:text-sm md:text-lg text-slate-400 max-w-xl delay-400 leading-relaxed px-2">
             {t.hero_sub}
           </p>
 
-          {/* Dynamic Pricing Display — ONLY the relevant price */}
-          {showIraqPricing ? (
-            <div className="delay-400 py-4 md:py-6">
-              <div className="inline-flex flex-col items-center justify-center px-6 py-4 md:px-10 md:py-6 rounded-2xl md:rounded-3xl bg-gradient-to-b from-amber-900/20 to-indigo-900/10 border-2 border-amber-500/30 relative overflow-hidden group shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                {/* Location badge */}
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-[10px] md:text-xs font-bold tracking-wide">
-                  العراق
+          {/* Compact Pricing Card — with ZainCash + FIB */}
+          <div className="w-full max-w-xs mx-auto delay-500">
+            <div className="glass-card border border-amber-500/20 p-3 md:p-5 rounded-xl md:rounded-2xl">
+              <div className="flex items-center justify-center gap-4 text-xs md:text-sm">
+                <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-300 font-bold">
+                  <Zap className="w-3 h-3" /> ZainCash
                 </span>
-                <div className="flex items-baseline gap-2 md:gap-3 mt-3">
-                  <span className="text-4xl sm:text-5xl md:text-7xl font-black text-gradient-vibrant drop-shadow-lg">{t.iq_tier_amount}</span>
-                  <div className="flex flex-col items-start leading-none">
-                    <span className="text-lg md:text-2xl font-bold text-white/90">{t.iq_tier_currency}</span>
-                    <span className="text-sm md:text-lg font-medium text-indigo-400/80">{t.iq_tier_period}</span>
-                  </div>
-                </div>
-                <span className="text-slate-400 mt-2 md:mt-3 font-medium tracking-wide uppercase text-[10px] md:text-xs opacity-70">{t.hero_price_label}</span>
+                <span className="text-slate-600">|</span>
+                <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 font-bold">
+                  <Zap className="w-3 h-3" /> FIB
+                </span>
+                <span className="text-slate-600 hidden sm:inline">|</span>
+                <span className="text-slate-400 hidden sm:inline">تحويل محلي</span>
               </div>
             </div>
-          ) : (
-            <div className="delay-400 py-4 md:py-6">
-              <div className="inline-flex flex-col items-center justify-center px-6 py-4 md:px-10 md:py-6 rounded-2xl md:rounded-3xl bg-gradient-to-b from-cyan-900/20 to-indigo-900/10 border-2 border-cyan-500/30 relative overflow-hidden group shadow-2xl">
-                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 text-[10px] md:text-xs font-bold tracking-wide">
-                  Global
-                </span>
-                <div className="flex items-baseline gap-2 md:gap-3 mt-3">
-                  <span className="text-4xl sm:text-5xl md:text-7xl font-black text-gradient-vibrant drop-shadow-lg">{t.intl_tier_amount}</span>
-                  <div className="flex flex-col items-start leading-none">
-                    <span className="text-lg md:text-2xl font-bold text-white/90">{t.intl_tier_currency}</span>
-                    <span className="text-sm md:text-lg font-medium text-indigo-400/80">{t.intl_tier_period}</span>
-                  </div>
-                </div>
-                <span className="text-slate-400 mt-2 md:mt-3 font-medium tracking-wide uppercase text-[10px] md:text-xs opacity-70">{t.intl_tier_desc}</span>
-              </div>
-            </div>
-          )}
-
-          {/* Scarcity + Live Counter */}
-          <div className="flex flex-col items-center gap-3 delay-400">
-            <div className="flex items-center gap-2 text-sm md:text-base text-amber-400/80 font-medium">
-              <Clock className="w-4 h-4" />
-              <span>{t.hero_scarcity}</span>
-            </div>
-            <LiveCounter total={50} />
           </div>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 w-full px-4 sm:px-0 sm:w-auto delay-500">
+          {/* WhatsApp CTA — immediately under pricing card */}
+          <div className="w-full px-2 delay-500">
             <button
               onClick={() => handleWhatsAppClick()}
-              className="wa-btn btn-press flex items-center justify-center gap-2 md:gap-3 px-6 py-4 md:px-8 md:py-5 rounded-xl md:rounded-2xl bg-green-500 hover:bg-green-400 text-slate-950 font-black text-base md:text-lg transition-colors glow-green"
+              className="w-full wa-btn btn-press flex items-center justify-center gap-2 md:gap-3 px-5 py-3.5 md:px-8 md:py-5 rounded-xl md:rounded-2xl bg-green-500 hover:bg-green-400 text-slate-950 font-black text-sm md:text-lg transition-colors glow-green"
             >
               <MessageCircle className="w-5 h-5 md:w-6 md:h-6" />
               {t.hero_cta_main}
             </button>
-            <a
-              href="#demos"
-              className="btn-press flex items-center justify-center gap-2 px-6 py-4 md:px-8 md:py-5 rounded-xl md:rounded-2xl glass-card hover:bg-white/5 text-white font-semibold text-sm md:text-base transition-colors border border-white/10"
-            >
-              {t.hero_cta_demos}
-              <ChevronDown className="w-4 h-4 md:w-5 md:h-5 opacity-70" />
-            </a>
           </div>
 
-          {/* Social proof micro */}
-          <div className="flex items-center gap-4 text-xs md:text-sm text-slate-500 delay-500 pt-2">
-            <span className="flex items-center gap-1"><Shield className="w-3.5 h-3.5 text-cyan-400" /> 24/7 Support</span>
-            <span className="flex items-center gap-1"><Zap className="w-3.5 h-3.5 text-amber-400" /> Fast Loading</span>
-            <span className="flex items-center gap-1"><Star className="w-3.5 h-3.5 text-indigo-400" /> Custom Design</span>
+          {/* Secondary CTA */}
+          <a
+            href="#demos"
+            className="btn-press flex items-center justify-center gap-2 px-4 py-2.5 text-xs md:text-sm text-slate-400 hover:text-white font-medium transition-colors delay-500"
+          >
+            {t.hero_cta_demos}
+            <ChevronDown className="w-3.5 h-3.5 opacity-60" />
+          </a>
+
+          {/* Social proof micro strip */}
+          <div className="flex items-center justify-center gap-3 md:gap-4 text-[10px] md:text-sm text-slate-500 delay-500 pb-2 flex-wrap">
+            <span className="flex items-center gap-1"><Shield className="w-3 h-3 md:w-3.5 md:h-3.5 text-cyan-400" /> 24/7 Support</span>
+            <span className="text-slate-700">•</span>
+            <span className="flex items-center gap-1"><Zap className="w-3 h-3 md:w-3.5 md:h-3.5 text-amber-400" /> Fast Loading</span>
+            <span className="text-slate-700">•</span>
+            <span className="flex items-center gap-1"><Star className="w-3 h-3 md:w-3.5 md:h-3.5 text-indigo-400" /> Custom Design</span>
           </div>
         </section>
 
@@ -551,23 +551,26 @@ export default function App() {
             </button>
           </div>
           {/* Scarcity countdown */}
-          <div className="flex flex-col items-center gap-3 pt-4">
-            <LiveCounter total={50} large />
-            <span className="flex items-center gap-1.5 text-xs md:text-sm text-slate-500"><TrendingDown className="w-4 h-4 text-green-400" /> {t.dir === 'rtl' ? 'السعر الحالي مضمون' : 'Current price locked'}</span>
+          <div className="w-full max-w-sm mx-auto pt-4">
+            <FireProgressBar remaining={42} total={50} />
+            <span className="flex items-center justify-center gap-1.5 text-xs md:text-sm text-slate-500 mt-2"><TrendingDown className="w-4 h-4 text-green-400" /> {t.dir === 'rtl' ? 'السعر الحالي مضمون' : 'Current price locked'}</span>
           </div>
         </section>
 
       </main>
 
-      {/* Fixed Mobile Floating CTA */}
-      <div className="fixed bottom-6 right-6 z-[60] md:hidden">
+      {/* Fixed Mobile Bottom CTA Bar — full-width sticky */}
+      <div className="fixed bottom-0 left-0 right-0 z-[60] md:hidden bg-slate-950/95 backdrop-blur-lg border-t border-green-500/20 px-4 py-3">
         <button
           onClick={() => handleWhatsAppClick()}
-          className="w-14 h-14 rounded-full bg-green-500 flex items-center justify-center shadow-2xl glow-green animate-bounce-slow"
+          className="w-full wa-btn btn-press flex items-center justify-center gap-2 py-3.5 rounded-xl bg-green-500 hover:bg-green-400 text-slate-950 font-black text-sm transition-all glow-green shadow-lg"
         >
-          <MessageCircle className="w-7 h-7 text-white" />
+          <MessageCircle className="w-5 h-5" />
+          {t.hero_cta_main} — {showIraqPricing ? `${t.iq_tier_amount} ${t.iq_tier_currency}` : `${t.intl_tier_amount} ${t.intl_tier_currency}`}
         </button>
       </div>
+      {/* Spacer for mobile fixed bar */}
+      <div className="h-[72px] md:hidden"></div>
 
       {/* ── Footer ── */}
       <footer className="border-t border-slate-800/60 bg-slate-950 py-12 px-6 text-center text-slate-500 text-sm">
@@ -651,44 +654,53 @@ function TrustCard({ icon, title, desc, delay }) {
   );
 }
 
-/* ── Live Counter (FOMO Component) ── */
-function LiveCounter({ total = 50, large = false }) {
-  const [remaining, setRemaining] = useState(() => Math.floor(Math.random() * 8) + 40);
+/* ── Fire Progress Bar (FOMO Component) ── */
+function FireProgressBar({ remaining: initial, total = 50 }) {
+  const [remaining, setRemaining] = useState(() => initial || Math.floor(Math.random() * 10) + 38);
   const [animated, setAnimated] = useState(0);
 
   useEffect(() => {
     const timer = setInterval(() => {
       setRemaining(prev => Math.max(1, prev - (Math.random() > 0.6 ? 1 : 0)));
-    }, 8000 + Math.random() * 7000);
+    }, 10000 + Math.random() * 5000);
     return () => clearInterval(timer);
   }, []);
 
   useEffect(() => {
     if (animated < remaining) {
-      const timeout = setTimeout(() => setAnimated(prev => Math.min(prev + 1, remaining)), 40);
+      const timeout = setTimeout(() => setAnimated(prev => Math.min(prev + 1, remaining)), 30);
       return () => clearTimeout(timeout);
     }
   }, [animated, remaining]);
 
   const filled = total - remaining;
-  const pct = (filled / total) * 100;
+  const pct = Math.min((filled / total) * 100, 100);
 
   return (
-    <div className={`flex flex-col items-center gap-1.5 ${large ? 'scale-110' : ''}`}>
-      <div className="flex items-center gap-2 text-xs md:text-sm font-bold">
-        <Users className={`${large ? 'w-4 h-4 md:w-5 md:h-5' : 'w-3.5 h-3.5'} text-amber-400`} />
-        <span className="text-slate-300">
-          <span className="text-amber-400 font-black tabular-nums">{animated}</span>
-          <span className="text-slate-500 mx-1">/</span>
-          <span>{total}</span>
+    <div className="w-full">
+      <div className="flex items-center justify-between mb-1.5">
+        <span className="flex items-center gap-1.5 text-xs font-bold text-slate-400">
+          <Users className="w-3.5 h-3.5 text-amber-400" />
+          <span>
+            <span className="text-amber-400 font-black tabular-nums text-sm">{animated}</span>
+            <span className="text-slate-600 mx-1">/</span>
+            <span className="text-slate-500">{total}</span>
+          </span>
         </span>
-        <span className="text-slate-500 font-medium">{large ? (remaining === 1 ? 'spot left' : 'spots left') : (remaining === 1 ? 'spot' : 'spots')}</span>
+        <span className="text-[10px] font-bold text-slate-500">
+          {remaining} {remaining === 1 ? 'spot left' : 'spots left'}
+        </span>
       </div>
-      {/* Progress bar */}
-      <div className={`w-32 ${large ? 'md:w-48' : ''} h-1.5 rounded-full bg-slate-800 overflow-hidden`}>
+      {/* Fire progress bar */}
+      <div className="relative h-3 md:h-4 rounded-full bg-slate-800/80 overflow-hidden shadow-inner">
         <div
-          className="h-full rounded-full bg-gradient-to-r from-amber-500 to-orange-500 transition-all duration-1000 ease-out"
-          style={{ width: `${Math.min(pct, 100)}%` }}
+          className="h-full rounded-full fire-bar transition-all duration-1000 ease-out"
+          style={{ width: `${pct}%` }}
+        />
+        {/* Fire glow overlay */}
+        <div
+          className="absolute top-0 bottom-0 rounded-full fire-glow"
+          style={{ width: `${pct}%` }}
         />
       </div>
     </div>
