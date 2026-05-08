@@ -13,7 +13,6 @@ import {
   Shield,
   Zap,
   Star,
-  Headphones,
   MapPin,
   User,
   Store,
@@ -26,6 +25,9 @@ import {
   Globe,
   CreditCard,
   DollarSign,
+  Users,
+  Timer,
+  Landmark,
 } from 'lucide-react';
 
 function useVisitorLocation() {
@@ -44,7 +46,7 @@ function useVisitorLocation() {
     return () => controller.abort();
   }, []);
 
-  return { country, isIraq: country === 'IQ', loading };
+  return { country, isIraq: country === 'IQ' || (loading && country === null), loading };
 }
 
 export default function App() {
@@ -61,8 +63,8 @@ export default function App() {
   }, [t]);
 
   const handleWhatsAppClick = useCallback((msg) => {
-    const phoneNumber = "9647700000000";
-    const message = encodeURIComponent(msg || "مرحباً، أريد الاستفسار عن القائمة الرقمية.");
+    const phoneNumber = "9647738411429";
+    const message = encodeURIComponent(msg || "أهلاً نكسا ديجيتال، أريد تجربة المنيو الذكي لمطعمي");
     window.location.href = `whatsapp://send?phone=${phoneNumber}&text=${message}`;
   }, []);
 
@@ -171,10 +173,13 @@ export default function App() {
             </div>
           </div>
 
-          {/* Scarcity message under price */}
-          <div className="flex items-center gap-2 delay-400 text-sm md:text-base text-amber-400/80 font-medium">
-            <Clock className="w-4 h-4" />
-            <span>{t.hero_scarcity}</span>
+          {/* Scarcity + Live Counter */}
+          <div className="flex flex-col items-center gap-3 delay-400">
+            <div className="flex items-center gap-2 text-sm md:text-base text-amber-400/80 font-medium">
+              <Clock className="w-4 h-4" />
+              <span>{t.hero_scarcity}</span>
+            </div>
+            <LiveCounter total={50} />
           </div>
 
           {/* CTAs */}
@@ -511,11 +516,11 @@ export default function App() {
         </section>
 
         {/* ═══════════════════════════════════════════════
-           TRUST FACTORS
+           WHY NEXA DIGITAL? — TRUST
            ═══════════════════════════════════════════════ */}
         <section className="space-y-10 md:space-y-16">
           <div className="text-center space-y-2 md:space-y-4 max-w-3xl mx-auto px-2">
-            <span className="text-cyan-400 font-semibold tracking-wider uppercase text-xs md:text-sm">{t.trust_eyebrow}</span>
+            <span className="text-amber-400 font-semibold tracking-wider uppercase text-xs md:text-sm">{t.trust_eyebrow}</span>
             <h2 className="text-2xl md:text-5xl font-bold">{t.trust_title}</h2>
             <p className="text-slate-400 text-sm md:text-lg">{t.trust_sub}</p>
           </div>
@@ -524,10 +529,10 @@ export default function App() {
             {t.trust_items.map((item, idx) => (
               <TrustCard
                 key={idx}
-                icon={idx === 0 ? <Headphones className="w-6 h-6 md:w-8 md:h-8 text-cyan-400" /> :
-                      idx === 1 ? <Zap className="w-6 h-6 md:w-8 md:h-8 text-amber-400" /> :
-                      idx === 2 ? <Star className="w-6 h-6 md:w-8 md:h-8 text-indigo-400" /> :
-                                  <Shield className="w-6 h-6 md:w-8 md:h-8 text-green-400" />}
+                icon={idx === 0 ? <Landmark className="w-6 h-6 md:w-8 md:h-8 text-amber-400" /> :
+                      idx === 1 ? <Timer className="w-6 h-6 md:w-8 md:h-8 text-cyan-400" /> :
+                      idx === 2 ? <Shield className="w-6 h-6 md:w-8 md:h-8 text-green-400" /> :
+                                  <Star className="w-6 h-6 md:w-8 md:h-8 text-indigo-400" />}
                 title={item.title}
                 desc={item.desc}
                 delay={`delay-${(idx + 1) * 100}`}
@@ -556,9 +561,9 @@ export default function App() {
             </button>
           </div>
           {/* Scarcity countdown */}
-          <div className="flex items-center justify-center gap-4 text-xs md:text-sm text-slate-500 pt-4">
-            <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-amber-400" /> 50 {t.dir === 'rtl' ? 'مقعد متبقي' : 'spots remaining'}</span>
-            <span className="flex items-center gap-1.5"><TrendingDown className="w-4 h-4 text-green-400" /> {t.dir === 'rtl' ? 'السعر الحالي مضمون' : 'Current price locked'}</span>
+          <div className="flex flex-col items-center gap-3 pt-4">
+            <LiveCounter total={50} large />
+            <span className="flex items-center gap-1.5 text-xs md:text-sm text-slate-500"><TrendingDown className="w-4 h-4 text-green-400" /> {t.dir === 'rtl' ? 'السعر الحالي مضمون' : 'Current price locked'}</span>
           </div>
         </section>
 
@@ -652,6 +657,50 @@ function TrustCard({ icon, title, desc, delay }) {
       </div>
       <h3 className="text-lg md:text-xl font-bold text-slate-200 mb-1.5 md:mb-3 leading-tight">{title}</h3>
       <p className="text-slate-400 leading-relaxed text-xs md:text-base">{desc}</p>
+    </div>
+  );
+}
+
+/* ── Live Counter (FOMO Component) ── */
+function LiveCounter({ total = 50, large = false }) {
+  const [remaining, setRemaining] = useState(() => Math.floor(Math.random() * 8) + 40);
+  const [animated, setAnimated] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setRemaining(prev => Math.max(1, prev - (Math.random() > 0.6 ? 1 : 0)));
+    }, 8000 + Math.random() * 7000);
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    if (animated < remaining) {
+      const timeout = setTimeout(() => setAnimated(prev => Math.min(prev + 1, remaining)), 40);
+      return () => clearTimeout(timeout);
+    }
+  }, [animated, remaining]);
+
+  const filled = total - remaining;
+  const pct = (filled / total) * 100;
+
+  return (
+    <div className={`flex flex-col items-center gap-1.5 ${large ? 'scale-110' : ''}`}>
+      <div className="flex items-center gap-2 text-xs md:text-sm font-bold">
+        <Users className={`${large ? 'w-4 h-4 md:w-5 md:h-5' : 'w-3.5 h-3.5'} text-amber-400`} />
+        <span className="text-slate-300">
+          <span className="text-amber-400 font-black tabular-nums">{animated}</span>
+          <span className="text-slate-500 mx-1">/</span>
+          <span>{total}</span>
+        </span>
+        <span className="text-slate-500 font-medium">{large ? (remaining === 1 ? 'spot left' : 'spots left') : (remaining === 1 ? 'spot' : 'spots')}</span>
+      </div>
+      {/* Progress bar */}
+      <div className={`w-32 ${large ? 'md:w-48' : ''} h-1.5 rounded-full bg-slate-800 overflow-hidden`}>
+        <div
+          className="h-full rounded-full bg-gradient-to-r from-amber-500 to-orange-500 transition-all duration-1000 ease-out"
+          style={{ width: `${Math.min(pct, 100)}%` }}
+        />
+      </div>
     </div>
   );
 }

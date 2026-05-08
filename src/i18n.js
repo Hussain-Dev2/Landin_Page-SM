@@ -12,10 +12,10 @@ export const translations = {
     nav_cta: 'تواصل معنا',
 
     // ── Hero: ATTENTION ──
-    hero_badge: 'عرض خاص: أول 50 مطعم فقط',
-    hero_headline_1: 'ودّع طباعة القوائم الورقية',
-    hero_headline_2: 'قائمة رقمية فاخرة لمطعمك',
-    hero_sub: 'خلص من مصاريف الطباعة الشهرية وتكاليف التحديث. قائمة رقمية بتصميم خاص بمطعمك — تعدّل أسعارك بنفسك وتستقبل الطلبات عبر واتساب بدون وسيط.',
+    hero_badge: '🔥 عرض خاص: أول 50 مطعم فقط',
+    hero_headline_1: 'تعبت من تبديل المنيو كل ما يتغير سعر الدولار؟',
+    hero_headline_2: 'قائمة رقمية لمطعمك بـ 40,000 دينار — وخلاص',
+    hero_sub: 'كل ما يرتفع سعر الصرف، تضطر تطبع منيو جديد بأسعار جديدة. مع القائمة الرقمية: تعدّل الأسعار بنفسك بثواني، تستقبل الطلبات على واتساب، وتوفر فلوس الطباعة الشهرية. مرة واحدة تدفع — وسنة كاملة من غير مصاريف.',
     hero_cta_main: 'احجز مقعدك الآن',
     hero_cta_demos: 'شاهد نماذج حية',
 
@@ -23,10 +23,10 @@ export const translations = {
     hero_price: '40,000',
     hero_currency: 'د.ع',
     hero_period: '/ سنة',
-    hero_price_label: 'اشتراك سنوي — دعم محلي',
+    hero_price_label: 'اشتراك سنوي — دعم محلي عراقي',
 
     // Scarcity / urgency
-    hero_scarcity: 'أول 50 مطعم فقط بهذا السعر',
+    hero_scarcity: 'أول 50 مطعم فقط بهذا السعر — بعدها يرتفع',
 
     // ── Pain Points: INTEREST ──
     pain_eyebrow: 'توقف عن حرق فلوسك',
@@ -122,15 +122,15 @@ export const translations = {
     form_note: 'بياناتك آمنة — نستخدمها فقط للتواصل معك',
     form_submit: 'أرسل الطلب — احجز مقعدك',
 
-    // ── Trust Factors ──
-    trust_eyebrow: 'نكسا ديجيتال',
-    trust_title: 'خدمة موثوقة تدعمك على طول',
-    trust_sub: 'ما تدفع فلوسك وتروح — احنا ويّاك خطوة بخطوة.',
+    // ── Why Nexa Digital? (Trust Section) ──
+    trust_eyebrow: 'ليه نكسا ديجيتال؟',
+    trust_title: 'لأنّ خدماتنا مصممة للمطاعم العراقية',
+    trust_sub: 'مو بس نبيعك منيو — احنا ندعمك من البصرة لكل العراق.',
     trust_items: [
-      { title: 'دعم فني 24/7', desc: 'فريق متكامل يرد عليك بأي وقت — حتى العطل الرسمية. واتساب، اتصال، كل شي.' },
-      { title: 'سرعة تحميل خيالية', desc: 'سيرفرات عالية الأداء — قائمتك تتحمل بأقل من ثانية. ما يضيع زبون بسبب البطيء.' },
-      { title: 'تصميم احترافي', desc: 'قائمة رقمية بهوية مطعمك — ألوانك، شعارك، طابعك. مو قوالب جاهزة.' },
-      { title: 'ضمان الرضا', desc: 'ما يعجبك التصميم؟ نعدّله لحد ما ترتاح — بدون رسوم إضافية.' },
+      { title: 'دعم محلي — من البصرة', desc: 'فريقنا موجود بالبصرة وجاهز يرد عليك بأي وقت. واتساب، اتصال، أو حتى زبونك يجينا — احنه ويّاك.' },
+      { title: 'تجهيز خلال 24 ساعة', desc: 'تبي المنيو جاهز بكرة؟ نشتغل ونرسله لك خلال 24 ساعة من تأكيد الطلب — لا تأخير ولا أعذار.' },
+      { title: 'بدون رسوم خفية', desc: '40,000 دينار فقط — كل شي شامل. التصميم، الاستضافة، الدعم، التحديثات. ولا ريال زيادة.' },
+      { title: 'ضمان الرضا الكامل', desc: 'ما عجبك التصميم؟ نعدّله لحد ما تخلص منه — بدون فلوس زيادة. رضاك يهمنا مو نخلص منك.' },
     ],
 
     // ── Final CTA ──
@@ -152,10 +152,10 @@ export const translations = {
     nav_cta: 'Contact Us',
 
     // ── Hero: ATTENTION ──
-    hero_badge: 'Limited Offer: First 50 Restaurants Only',
-    hero_headline_1: 'Stop Throwing Money Away on',
-    hero_headline_2: 'Paper Menu Printing',
-    hero_sub: 'Eliminate monthly printing costs and price update fees. A premium digital menu built around your brand — update prices instantly and receive orders directly on WhatsApp. Zero printing. Zero waste.',
+    hero_badge: '🔥 Limited Offer: First 50 Restaurants Only',
+    hero_headline_1: 'Tired of Replacing Your Menu',
+    hero_headline_2: 'Every Time Prices Change?',
+    hero_sub: 'Exchange rate fluctuates? Need to update prices? With a digital menu, you make changes in seconds — no reprinting, no extra costs. Receive orders via WhatsApp, save on monthly printing, and pay once for a full year.',
     hero_cta_main: 'Secure Your Spot Now',
     hero_cta_demos: 'View Live Demos',
 
@@ -164,7 +164,7 @@ export const translations = {
     hero_period: '/ year',
     hero_price_label: 'All-inclusive — Premium Global Service',
 
-    hero_scarcity: 'First 50 restaurants at this price only',
+    hero_scarcity: 'First 50 restaurants at this price — then it goes up',
 
     // ── Pain Points: INTEREST ──
     pain_eyebrow: 'Stop the Bleeding',
@@ -260,15 +260,15 @@ export const translations = {
     form_note: 'Your data is safe — we only use it to contact you',
     form_submit: 'Send Request — Reserve My Spot',
 
-    // ── Trust Factors ──
-    trust_eyebrow: 'Nexa Digital',
-    trust_title: 'Reliable Service Backed by Real Support',
-    trust_sub: "You're not just buying software — you're getting a partner who's with you every step.",
+    // ── Why Nexa Digital? (Trust Section) ──
+    trust_eyebrow: 'Why Nexa Digital?',
+    trust_title: 'Built for Iraqi Restaurants — Backed by Local Support',
+    trust_sub: "We're not just selling you a menu — we're your local partner from Basra to everywhere.",
     trust_items: [
-      { title: '24/7 Technical Support', desc: 'A dedicated team responds anytime — holidays included. WhatsApp, phone, however you need us.' },
-      { title: 'Blazing-Fast Speed', desc: 'Enterprise-grade servers — your menu loads in under 1 second. No customer left waiting.' },
-      { title: 'Custom Brand Design', desc: 'Your menu, your identity — colors, logo, style. No generic templates. Ever.' },
-      { title: 'Satisfaction Guarantee', desc: "Not happy with the design? We'll redo it until you love it — at no extra cost." },
+      { title: 'Local Support — From Basra', desc: 'Our team is based in Basra and responds anytime. WhatsApp, call, or visit — we are here for you.' },
+      { title: 'Setup in Under 24 Hours', desc: 'Need your menu ready tomorrow? We deliver within 24 hours of order confirmation — no delays, no excuses.' },
+      { title: 'No Hidden Fees', desc: '$35 or 40,000 IQD — everything included. Design, hosting, support, updates. Not a penny more.' },
+      { title: 'Full Satisfaction Guarantee', desc: "Not happy with the design? We'll rework it until you love it — at no extra cost. Your satisfaction drives us." },
     ],
 
     // ── Final CTA ──
