@@ -23,8 +23,6 @@ import {
   AlertTriangle,
   Package,
   Globe,
-  CreditCard,
-  DollarSign,
   Users,
   Timer,
   Landmark,
@@ -403,33 +401,6 @@ export default function App() {
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════════════════════════════════════════════
-           INTERNATIONAL CUSTOMERS SECTION
-           ═══════════════════════════════════════════════ */}
-        <section className="relative">
-          <div className="glass-card border-cyan-500/10 p-6 md:p-12 rounded-2xl md:rounded-3xl relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 via-transparent to-indigo-500/5 pointer-events-none"></div>
-            <div className="relative z-10 max-w-3xl mx-auto text-center space-y-6">
-              <span className="text-cyan-400 font-semibold tracking-wider uppercase text-xs md:text-sm">{t.intl_eyebrow}</span>
-              <h2 className="text-2xl md:text-4xl font-bold text-white">{t.intl_title}</h2>
-              <p className="text-slate-300 text-sm md:text-lg leading-relaxed">{t.intl_sub}</p>
-              <div className="flex flex-wrap items-center justify-center gap-4 text-sm md:text-base text-slate-400">
-                <span className="flex items-center gap-2"><CreditCard className="w-4 h-4 text-cyan-400" /> PayPal</span>
-                <span className="flex items-center gap-2"><DollarSign className="w-4 h-4 text-green-400" /> Credit Cards</span>
-                <Globe className="w-4 h-4 text-amber-400" />
-                <span>USDT • Bank Transfer</span>
-              </div>
-              <button
-                onClick={() => handleWhatsAppClick()}
-                className="btn-press inline-flex items-center gap-2 px-6 py-4 md:px-8 md:py-5 rounded-xl md:rounded-2xl bg-cyan-600 hover:bg-cyan-500 text-white font-black text-base md:text-lg transition-colors glow-cyan"
-              >
-                <Send className="w-5 h-5" />
-                {t.intl_cta}
-              </button>
             </div>
           </div>
         </section>
