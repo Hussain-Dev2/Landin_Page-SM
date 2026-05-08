@@ -44,7 +44,7 @@ function useVisitorLocation() {
     return () => controller.abort();
   }, []);
 
-  return { country, isIraq: country === 'IQ' || (loading && country === null), loading };
+  return { country, isIraq: country === null || country === 'IQ', loading };
 }
 
 export default function App() {
@@ -84,9 +84,6 @@ export default function App() {
 
   const ArrowIcon = t.dir === 'rtl' ? ArrowLeft : ArrowRight;
   const showIraqPricing = isIraq;
-  const heroPrice = showIraqPricing
-    ? { amount: t.iq_tier_amount, currency: t.iq_tier_currency, period: t.iq_tier_period, label: t.hero_price_label }
-    : { amount: t.intl_tier_amount, currency: t.intl_tier_currency, period: t.intl_tier_period, label: t.hero_price_label };
 
   return (
     <div className="min-h-screen bg-mesh font-sans overflow-hidden">
@@ -116,12 +113,10 @@ export default function App() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            {!showIraqPricing && showIraqPricing !== undefined && (
-              <span className="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-medium">
-                <Globe className="w-3 h-3" />
-                Global
-              </span>
-            )}
+            <span className={`hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium ${showIraqPricing ? 'bg-amber-500/10 border border-amber-500/20 text-amber-300' : 'bg-cyan-500/10 border border-cyan-500/20 text-cyan-300'}`}>
+              <Globe className="w-3 h-3" />
+              {showIraqPricing ? 'العراق' : 'Global'}
+            </span>
             <button
               onClick={() => handleWhatsAppClick()}
               className="px-4 py-2 md:px-5 md:py-2 rounded-full bg-indigo-500/20 hover:bg-indigo-500/30 border border-indigo-500/30 text-white text-xs md:text-sm font-medium transition-all btn-press flex items-center gap-2"
@@ -156,20 +151,43 @@ export default function App() {
             {t.hero_sub}
           </p>
 
-          {/* Dynamic Pricing Display */}
-          <div className="delay-400 py-4 md:py-6">
-            <div className="inline-flex flex-col items-center justify-center px-6 py-4 md:px-10 md:py-6 rounded-2xl md:rounded-3xl bg-gradient-to-b from-indigo-900/20 to-amber-900/10 border border-amber-500/20 relative overflow-hidden group shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-r from-amber-500/5 to-indigo-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="flex items-baseline gap-2 md:gap-3">
-                <span className="text-4xl sm:text-5xl md:text-7xl font-black text-gradient-vibrant drop-shadow-lg">{heroPrice.amount}</span>
-                <div className="flex flex-col items-start leading-none">
-                  <span className="text-lg md:text-2xl font-bold text-white/90">{heroPrice.currency}</span>
-                  <span className="text-sm md:text-lg font-medium text-indigo-400/80">{heroPrice.period}</span>
+          {/* Dynamic Pricing Display — ONLY the relevant price */}
+          {showIraqPricing ? (
+            <div className="delay-400 py-4 md:py-6">
+              <div className="inline-flex flex-col items-center justify-center px-6 py-4 md:px-10 md:py-6 rounded-2xl md:rounded-3xl bg-gradient-to-b from-amber-900/20 to-indigo-900/10 border-2 border-amber-500/30 relative overflow-hidden group shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-r from-amber-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                {/* Location badge */}
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-[10px] md:text-xs font-bold tracking-wide">
+                  العراق
+                </span>
+                <div className="flex items-baseline gap-2 md:gap-3 mt-3">
+                  <span className="text-4xl sm:text-5xl md:text-7xl font-black text-gradient-vibrant drop-shadow-lg">{t.iq_tier_amount}</span>
+                  <div className="flex flex-col items-start leading-none">
+                    <span className="text-lg md:text-2xl font-bold text-white/90">{t.iq_tier_currency}</span>
+                    <span className="text-sm md:text-lg font-medium text-indigo-400/80">{t.iq_tier_period}</span>
+                  </div>
                 </div>
+                <span className="text-slate-400 mt-2 md:mt-3 font-medium tracking-wide uppercase text-[10px] md:text-xs opacity-70">{t.hero_price_label}</span>
               </div>
-              <span className="text-slate-400 mt-2 md:mt-3 font-medium tracking-wide uppercase text-[10px] md:text-xs opacity-70">{heroPrice.label}</span>
             </div>
-          </div>
+          ) : (
+            <div className="delay-400 py-4 md:py-6">
+              <div className="inline-flex flex-col items-center justify-center px-6 py-4 md:px-10 md:py-6 rounded-2xl md:rounded-3xl bg-gradient-to-b from-cyan-900/20 to-indigo-900/10 border-2 border-cyan-500/30 relative overflow-hidden group shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 text-[10px] md:text-xs font-bold tracking-wide">
+                  Global
+                </span>
+                <div className="flex items-baseline gap-2 md:gap-3 mt-3">
+                  <span className="text-4xl sm:text-5xl md:text-7xl font-black text-gradient-vibrant drop-shadow-lg">{t.intl_tier_amount}</span>
+                  <div className="flex flex-col items-start leading-none">
+                    <span className="text-lg md:text-2xl font-bold text-white/90">{t.intl_tier_currency}</span>
+                    <span className="text-sm md:text-lg font-medium text-indigo-400/80">{t.intl_tier_period}</span>
+                  </div>
+                </div>
+                <span className="text-slate-400 mt-2 md:mt-3 font-medium tracking-wide uppercase text-[10px] md:text-xs opacity-70">{t.intl_tier_desc}</span>
+              </div>
+            </div>
+          )}
 
           {/* Scarcity + Live Counter */}
           <div className="flex flex-col items-center gap-3 delay-400">
@@ -338,24 +356,22 @@ export default function App() {
 
             <div className="grid md:grid-cols-2 gap-6 md:gap-8">
 
-              {/* Iraq Tier */}
-              <div className={`glass-card border-2 p-5 md:p-8 rounded-2xl md:rounded-3xl relative overflow-hidden shadow-2xl transition-all duration-500 ${showIraqPricing ? 'border-amber-500/40 scale-[1.02]' : 'border-white/5 opacity-70 hover:opacity-100'}`}>
-                {showIraqPricing && (
-                  <div className="absolute -top-12 -right-12 w-24 h-24 bg-amber-500/10 rounded-full blur-2xl"></div>
-                )}
+              {/* Iraq Tier — Primary for Iraqi users */}
+              <div className={`glass-card border-2 p-5 md:p-8 rounded-2xl md:rounded-3xl relative overflow-hidden shadow-2xl transition-all duration-500 ${showIraqPricing ? 'border-amber-500/40 scale-[1.02] ring-1 ring-amber-500/20' : 'border-white/10'}`}>
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-xl md:text-2xl font-bold text-white">{t.iq_tier_title}</h3>
                     <span className="px-3 py-1 rounded-full bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-bold">{t.iq_tier_badge}</span>
                   </div>
-                  <div className="flex items-baseline gap-1.5 md:gap-2 mb-3">
+                  <div className="flex items-baseline gap-1.5 md:gap-2 mb-2">
                     <span className="text-3xl md:text-5xl font-black text-white">{t.iq_tier_amount}</span>
                     <span className="text-base md:text-lg text-slate-400">{t.iq_tier_currency}{t.iq_tier_period}</span>
                   </div>
+                  <p className="text-slate-500 text-xs mb-1">{t.iq_tier_payment}</p>
                   <p className="text-slate-400 text-sm mb-6">{t.iq_tier_desc}</p>
                   <button
                     onClick={() => handleWhatsAppClick()}
-                    className={`w-full btn-press flex items-center justify-center gap-2 px-5 py-4 rounded-xl font-black text-base transition-all glow-amber ${showIraqPricing ? 'bg-amber-500 hover:bg-amber-400 text-slate-950' : 'bg-indigo-600 hover:bg-indigo-500 text-white'}`}
+                    className="w-full btn-press flex items-center justify-center gap-2 px-5 py-4 rounded-xl font-black text-base transition-all glow-amber bg-amber-500 hover:bg-amber-400 text-slate-950"
                   >
                     {t.price_cta}
                     <ArrowIcon className="w-4 h-4 ltr-icon" />
@@ -363,28 +379,31 @@ export default function App() {
                 </div>
               </div>
 
-              {/* International Tier */}
-              <div className={`glass-card border-2 p-5 md:p-8 rounded-2xl md:rounded-3xl relative overflow-hidden shadow-2xl transition-all duration-500 ${!showIraqPricing ? 'border-cyan-500/40 scale-[1.02]' : 'border-white/5 opacity-70 hover:opacity-100'}`}>
-                {!showIraqPricing && (
-                  <div className="absolute -top-12 -right-12 w-24 h-24 bg-cyan-500/10 rounded-full blur-2xl"></div>
-                )}
+              {/* International Tier — de-emphasized for Iraqi users */}
+              <div className={`glass-card border-2 p-5 md:p-8 rounded-2xl md:rounded-3xl relative overflow-hidden shadow-2xl transition-all duration-500 ${!showIraqPricing ? 'border-cyan-500/40 scale-[1.02] ring-1 ring-cyan-500/20' : 'border-white/10 opacity-60 hover:opacity-100'}`}>
                 <div className="relative z-10">
                   <div className="flex items-center justify-between mb-4">
                     <h3 className="text-xl md:text-2xl font-bold text-white">{t.intl_tier_title}</h3>
                     <span className="px-3 py-1 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 text-xs font-bold">{t.intl_tier_badge}</span>
                   </div>
-                  <div className="flex items-baseline gap-1.5 md:gap-2 mb-3">
+                  <div className="flex items-baseline gap-1.5 md:gap-2 mb-2">
                     <span className="text-3xl md:text-5xl font-black text-white">{t.intl_tier_amount}</span>
                     <span className="text-base md:text-lg text-slate-400">{t.intl_tier_currency}{t.intl_tier_period}</span>
                   </div>
+                  <p className="text-slate-500 text-xs mb-1">{t.intl_tier_payment}</p>
                   <p className="text-slate-400 text-sm mb-6">{t.intl_tier_desc}</p>
                   <button
                     onClick={() => handleWhatsAppClick()}
-                    className={`w-full btn-press flex items-center justify-center gap-2 px-5 py-4 rounded-xl font-black text-base transition-all glow-cyan ${!showIraqPricing ? 'bg-cyan-500 hover:bg-cyan-400 text-slate-950' : 'bg-indigo-600 hover:bg-indigo-500 text-white'}`}
+                    className="w-full btn-press flex items-center justify-center gap-2 px-5 py-4 rounded-xl font-black text-base transition-all glow-cyan bg-cyan-600 hover:bg-cyan-500 text-white"
                   >
                     {t.price_cta}
                     <ArrowIcon className="w-4 h-4 ltr-icon" />
                   </button>
+                  {showIraqPricing && (
+                    <p className="text-center text-[10px] text-slate-500 mt-3 border-t border-slate-700/50 pt-3">
+                      {t.dir === 'rtl' ? 'هذه الباقة للعملاء خارج العراق' : 'This plan is for customers outside Iraq'}
+                    </p>
+                  )}
                 </div>
               </div>
 

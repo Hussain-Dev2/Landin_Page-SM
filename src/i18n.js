@@ -72,20 +72,22 @@ export const translations = {
     price_subtitle: 'سعر واحد شامل، بدون رسوم خفية ولا عقود طويلة.',
 
     // Iraq tier
-    iq_tier_title: 'الباقة المحلية — العراق',
-    iq_tier_badge: 'دعم محلي',
+    iq_tier_title: 'المنيو المتكامل',
+    iq_tier_badge: 'دفع محلي',
     iq_tier_amount: '40,000',
     iq_tier_currency: 'د.ع',
     iq_tier_period: '/ سنة',
-    iq_tier_desc: 'سعر خاص لدعم المطاعم العراقية — أقل من تكلفة طباعة شهرين!',
+    iq_tier_desc: 'اشتراك سنوي شامل للمطاعم العراقية — ادفع مرّة واستمتع سنة كاملة.',
+    iq_tier_payment: 'ZainCash • تحويل محلي',
 
     // International tier
-    intl_tier_title: 'الباقة العالمية',
-    intl_tier_badge: 'خدمة بريميوم',
+    intl_tier_title: 'المنيو المتكامل',
+    intl_tier_badge: 'دفع دولي',
     intl_tier_amount: '$35',
     intl_tier_currency: 'USD',
     intl_tier_period: '/ year',
-    intl_tier_desc: 'خدمة عالمية بمعايير احترافية — دفعة واحدة وتستمتع سنة كاملة.',
+    intl_tier_desc: 'نفس الميزات الاحترافية — الدفع بالدولار للعملاء خارج العراق.',
+    intl_tier_payment: 'PayPal • بطاقات دولية',
 
     price_desc: 'الباقة المتكاملة تشمل كل ما تحتاجه لانطلاق قائمتك الرقمية',
     price_includes: 'ماذا يشمل الاشتراك؟',
@@ -210,20 +212,22 @@ export const translations = {
     price_subtitle: 'All-inclusive pricing. No hidden fees. No long-term contracts.',
 
     // Iraq tier
-    iq_tier_title: 'Local Plan — Iraq',
-    iq_tier_badge: 'Local Support',
+    iq_tier_title: 'Full Professional Plan',
+    iq_tier_badge: 'Local Payment',
     iq_tier_amount: '40,000',
     iq_tier_currency: 'IQD',
     iq_tier_period: '/ year',
-    iq_tier_desc: 'Special pricing for Iraqi restaurants — less than 2 months of printing costs!',
+    iq_tier_desc: 'All-inclusive annual subscription for Iraqi restaurants — pay once, enjoy a full year.',
+    iq_tier_payment: 'ZainCash • Local Transfer',
 
     // International tier
-    intl_tier_title: 'Global Plan',
-    intl_tier_badge: 'Premium Service',
+    intl_tier_title: 'Full Professional Plan',
+    intl_tier_badge: 'International Payment',
     intl_tier_amount: '$35',
     intl_tier_currency: 'USD',
     intl_tier_period: '/ year',
-    intl_tier_desc: 'World-class service at a fraction of the cost — one payment, one year of premium digital menu.',
+    intl_tier_desc: 'Same professional features — USD payment for customers outside Iraq.',
+    intl_tier_payment: 'PayPal • Credit Cards',
 
     price_desc: 'Everything included to launch your digital menu',
     price_includes: "What's included?",
