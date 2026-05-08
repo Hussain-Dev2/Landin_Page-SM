@@ -112,6 +112,9 @@ body {
 .glow-green {
   box-shadow: 0 0 20px rgba(37, 211, 102, 0.4), 0 0 40px rgba(37, 211, 102, 0.15);
 }
+.glow-amber {
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.3), 0 0 40px rgba(245, 158, 11, 0.1);
+}
 
 /* ── Gradient text ───────────────────────────────── */
 .text-gradient-cyan {
@@ -233,6 +236,15 @@ body {
 }
 .orbit-ring-reverse {
   animation: orbit 18s linear infinite reverse;
+}
+
+/* ── Bounce slow for mobile CTA ──────────────────── */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
 }
 
 /* ── Scrollbar ───────────────────────────────────── */
