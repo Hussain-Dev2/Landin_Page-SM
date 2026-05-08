@@ -87,7 +87,7 @@ export const translations = {
     intl_tier_currency: 'USD',
     intl_tier_period: '/ year',
     intl_tier_desc: 'نفس الميزات الاحترافية — الدفع بالدولار للعملاء خارج العراق.',
-    intl_tier_payment: 'PayPal • بطاقات دولية',
+    intl_tier_payment: 'بطاقات ائتمان • USDT • تحويل بنكي',
 
     price_desc: 'الباقة المتكاملة تشمل كل ما تحتاجه لانطلاق قائمتك الرقمية',
     price_includes: 'ماذا يشمل الاشتراك؟',
@@ -106,8 +106,8 @@ export const translations = {
     intl_eyebrow: 'Global Service',
     intl_title: 'Premium Digital Menu — $35/Year',
     intl_sub: 'Same premium service. Same 24/7 support. Lightning-fast hosting. One low annual price with global payment options.',
-    intl_payments: 'نقبل طرق دفع عالمية: PayPal • بطاقات ائتمان USDT • تحويل بنكي',
-    intl_cta: 'Start Now — Pay via PayPal/Card',
+    intl_payments: 'بطاقات ائتمان • USDT • تحويل بنكي',
+    intl_cta: 'Start Now — Pay via Card',
 
     // ── Lead Capture Form (Micro-Conversion) ──
     form_eyebrow: 'لا تفوت الفرصة',
@@ -227,7 +227,7 @@ export const translations = {
     intl_tier_currency: 'USD',
     intl_tier_period: '/ year',
     intl_tier_desc: 'Same professional features — USD payment for customers outside Iraq.',
-    intl_tier_payment: 'PayPal • Credit Cards',
+    intl_tier_payment: 'Credit Cards • USDT • Bank Transfer',
 
     price_desc: 'Everything included to launch your digital menu',
     price_includes: "What's included?",
@@ -246,8 +246,8 @@ export const translations = {
     intl_eyebrow: 'Global Service',
     intl_title: 'Premium Digital Menu — $35/Year',
     intl_sub: 'Same premium service. Same 24/7 support. Lightning-fast hosting. One low annual price with global payment options.',
-    intl_payments: 'We accept: PayPal • Credit Cards USDT • Bank Transfer',
-    intl_cta: 'Start Now — Pay via PayPal/Card',
+    intl_payments: 'Credit Cards • USDT • Bank Transfer',
+    intl_cta: 'Start Now — Pay via Card',
 
     // ── Lead Capture Form ──
     form_eyebrow: "Don't Miss Out",
